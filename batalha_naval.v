@@ -1,7 +1,6 @@
 module priplayer (
-  input clk;
-  output [2:0]ply1;
-  );
+  input clk,
+  output [2:0]ply1);
 
   reg [2:0]jogada;
   reg j1 = 0 ;
@@ -10,27 +9,27 @@ module priplayer (
 
   always @ (posedge clk ) begin
     j1 = j1 + 1;
-    if(j1=1)begin
+    if(j1==1)begin
         jogada[0] = 0;
         jogada[1] = 0;
         jogada[2] = 1;
-    end else if(j1=2)begin
+    end else if(j1==2)begin
         jogada[0] = 0;
         jogada[1] = 1;
         jogada[2] = 0;
-    end else if(j1=3)begin
+    end else if(j1==3)begin
         jogada[0] = 0;
         jogada[1] = 1;
         jogada[2] = 1;
-    end else if(j1=4)begin
+    end else if(j1==4)begin
         jogada[0] = 1;
         jogada[1] = 0;
         jogada[2] = 0;
-    end else if(j1=5)begin
+    end else if(j1==5)begin
         jogada[0] = 1;
         jogada[1] = 0;
         jogada[2] = 1;
-    end else if(j1=6)begin
+    end else if(j1==6)begin
         jogada[0] = 1;
         jogada[1] = 1;
         jogada[2] = 0;
@@ -41,7 +40,7 @@ module priplayer (
 endmodule //
 
 module segplayer (
-    input clk;
+    input clk,
     output [2:0]ply2);
 
     reg [2:0]jogada;
@@ -51,27 +50,27 @@ module segplayer (
 
     always @ ( clk ) begin
       j2 = j2 + 1;
-      if(j2=3) begin
+      if(j2==3) begin
           jogada[0] = 0;
           jogada[1] = 0;
           jogada[2] = 1;
-      end else if(j2=2) begin
+      end else if(j2==2) begin
           jogada[0] = 0;
           jogada[1] = 1;
           jogada[2] = 0;
-      end else if(j2=1) begin
+      end else if(j2==1) begin
           jogada[0] = 0;
           jogada[1] = 1;
           jogada[2] = 1;
-      end else if(j2=4) begin
+      end else if(j2==4) begin
           jogada[0] = 1;
           jogada[1] = 0;
           jogada[2] = 0;
-      end else if(j2=6) begin
+      end else if(j2==6) begin
           jogada[0] = 1;
           jogada[1] = 0;
           jogada[2] = 1;
-      end else if(j2=5) begin
+      end else if(j2==5) begin
           jogada[0] = 1;
           jogada[1] = 1;
           jogada[2] = 0;
@@ -82,12 +81,15 @@ module segplayer (
 endmodule //
 
 module batalha (
-  input CLOCK_50;
+  input CLOCK_50,
   output [2:0]win);
 
   wire pl1;
   wire pl2;
+  reg ww = 0;
 
+  assign win = ww;  
+  
   priplayer jog1(CLOCK_50, ply1);
   segplayer jog2(CLOCK_50, ply2);
 
@@ -95,9 +97,9 @@ module batalha (
   assign pl2 <= (ply2);
 
   if(pl1 == pl2) begin
-    win <= 1;
+    ww = 1;
   end else begin
-    win <= 0;
+    ww = 0;
   end
 
 endmodule //
