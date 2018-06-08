@@ -73,6 +73,9 @@ module alfabeto(
 		else if (let == 6'b001111) begin
 			h = 7'b0111110; //V
 		end
+		else if (let == 'b111010) begin
+			h = 7'b1011100; //W
+		end
 		else if (let == 'b101101) begin
 			h = 7'b0000111; //X
 		end
@@ -86,51 +89,19 @@ module alfabeto(
 			h = 7'b0000000; //0
 		end
 	end
-	
 
 endmodule
 
 module brailev(
 	input CLOCK_50,
-	input [9:3] SW,
+	input [10:4] SW,
 	output [0:6] HEX0);
-	
-	
-	
+		
 	wire[6:0] bra;
 	
 	reg [5:0] letra = 6'b000000;
 	assign HEX0 = ~bra;
 	
 	alfabeto B(CLOCK_50, SW, bra);
-	
-	/*
-	assign HEX0 = hexa;
-	
-	always @(posedge CLOCK_50) begin
-		if (~SW[9]) begin
-			letra = letra + 6'b100000;
-		end
-		else if (~SW[8]) begin
-			letra = letra + 6'b010000;
-		end
-		else if (~SW[7]) begin
-			letra = letra + 6'b001000;
-		end
-		else if (~SW[6]) begin
-			letra = letra + 6'b000100;
-		end
-		else if (~SW[5]) begin
-			letra = letra + 6'b000010;
-		end
-		else if (~SW[4]) begin
-			letra = letra + 6'b000001;
-		end
-		else begin
-			letra = 6'b000000;
-		end
-	end
-	
-*/
 
 endmodule // braile
