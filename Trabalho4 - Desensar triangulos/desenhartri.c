@@ -58,7 +58,7 @@ int main(){
 		    	printf("O ponto esta no dentro do triangulo\n");
 					printf("X: %d - Y: %d\n", t.x, t.y);
 		    } else {
-					printf("O ponto nao esta no triangulo\n", );
+					printf("O ponto nao esta no triangulo\n");
 				}
       }
     printf("\n");
