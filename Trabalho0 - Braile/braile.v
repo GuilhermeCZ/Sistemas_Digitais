@@ -90,15 +90,21 @@ module alfabeto(
 
 endmodule
 
-module braile(
+module brailev(
 	input CLOCK_50,
 	input [9:3] SW,
-	output [6:0] HEX0);
+	output [0:6] HEX0);
+	
+	
+	
+	wire[6:0] bra;
 	
 	reg [5:0] letra = 6'b000000;
+	assign HEX0 = ~bra;
 	
-	alfabeto B(CLOCK_50, letra, hexa);
+	alfabeto B(CLOCK_50, SW, bra);
 	
+	/*
 	assign HEX0 = hexa;
 	
 	always @(posedge CLOCK_50) begin
@@ -125,6 +131,6 @@ module braile(
 		end
 	end
 	
-
+*/
 
 endmodule // braile

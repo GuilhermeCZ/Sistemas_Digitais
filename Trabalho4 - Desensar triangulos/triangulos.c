@@ -20,7 +20,7 @@ int main()
 {
 
     int resultado = 1, i, j, tipoOperacao;
-    char screen[480][640];
+    char screen[48][64];
 
     ponto P, s, p1, p2, p3;
 
