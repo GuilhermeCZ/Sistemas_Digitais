@@ -1,0 +1,95 @@
+$date
+	Fri Jun  8 17:40:40 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module teste $end
+$var wire 44 ! S0 [43:0] $end
+$var reg 44 " E1 [43:0] $end
+$var reg 44 # E2 [43:0] $end
+$var reg 1 $ clock $end
+$scope module B $end
+$var wire 44 % E1 [43:0] $end
+$var wire 44 & E2 [43:0] $end
+$var wire 44 ' S0 [43:0] $end
+$var wire 1 ( clock $end
+$var reg 44 ) aux [43:0] $end
+$var reg 44 * saida [43:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 *
+b0 )
+0(
+b0 '
+b10 &
+b10 %
+0$
+b10 #
+b10 "
+b0 !
+$end
+#3
+b100 )
+1$
+1(
+#6
+b100 #
+b100 &
+b100 "
+b100 %
+0$
+0(
+#9
+b1000 )
+b100 *
+b100 !
+b100 '
+1$
+1(
+#12
+b101 #
+b101 &
+b101 "
+b101 %
+0$
+0(
+#15
+b1010 )
+b1100 *
+b1100 !
+b1100 '
+1$
+1(
+#18
+b11 #
+b11 &
+b11 "
+b11 %
+0$
+0(
+#21
+b110 )
+b10110 *
+b10110 !
+b10110 '
+1$
+1(
+#24
+0$
+0(
+#27
+b11100 *
+b11100 !
+b11100 '
+1$
+1(
+#30
+0$
+0(

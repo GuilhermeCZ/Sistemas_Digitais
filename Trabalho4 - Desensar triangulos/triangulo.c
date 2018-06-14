@@ -1,78 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define I 64
-#define J 48
-typedef struct _ponto
-{
-    int i;
-    int j;
-} Ponto;
 
-int TesteTriangulo(Ponto A, Ponto B, Ponto C, Ponto T)
-{
-  int detA, detB, detC, detT, dett;
-  int i, j;
-
-  detT = (A.i * B.j * 1) + (A.j * 1 * C.i) + (1 * B.i * C.j) - (1 * B.j * C.i) - (1 * C.j * A.i) - (1 * A.j * B.i);
-  if(detT < 0){ detT*=-1; }
-  detA = (T.i * A.j * 1) + (T.j * 1 * B.i) + (1 * A.i * B.j) - (1 * A.j * B.i) - (T.i * 1 * B.j) - (T.j * A.i * 1);
-  if(detA < 0){ detA*=-1; }
-  detB = (T.i * B.j * 1) + (T.j * 1 * C.i) + (1 * B.i * C.j) - (1 * B.j * C.i) - (T.i * 1 * C.j) - (T.j * B.i * 1);
-  if(detB < 0){ detB*=-1; }
-  detC = (T.i * C.j * 1) + (T.j * 1 * A.i) + (1 * C.i * A.j) - (1 * C.j * A.i) - (T.i * 1 * A.j) - (T.j * C.i * 1);
-  if(detC < 0){ detC*=-1; }
-  dett = detA + detB + detC;
-  printf("detT: %d \ndetA: %d \ndetB: %d \ndetC: %d \ndett: %d \n", detT, detA, detB, detC, dett);
-
- if(dett<=detT)
- {
-   return 1;
- }
- else
- {
-   return 0;
- }
+int area(int x1, int y1, int x2, int y2, int x3, int y3){
+   return abs((x1*(y2-y3) + x2*(y3-y1)+ x3*(y1-y2))/2.0);
 }
 
-int main()
-{
-    int n;
-    Ponto A, B, C, T;
+int isInside(int x1, int y1, int x2, int y2, int x3, int y3, int x, int y){
+   int A = area (x1, y1, x2, y2, x3, y3);
+   int A1 = area (x, y, x2, y2, x3, y3);
+   int A2 = area (x1, y1, x, y, x3, y3);
+   int A3 = area (x1, y1, x2, y2, x, y);
+   return (A == A1 + A2 + A3);
+}
 
-    printf("\nInforme a primeira coordenada do triagulo!\n");
-    printf("A.i = ");
-    scanf("%d", &A.i);
-    printf("A.j = ");
-    scanf("%d", &A.j);
-
-    printf("\nInforme a segunda coordenada do triagulo!\n");
-    printf("B.i = ");
-    scanf("%d", &B.i);
-    printf("B.j = ");
-    scanf("%d", &B.j);
-
-    printf("\nInforme a terceira coordenada do triagulo!\n");
-    printf("C.i = ");
-    scanf("%d", &C.i);
-    printf("C.j = ");
-    scanf("%d", &C.j);
-
-    printf("\nInforme coordenada que deseja verificar se está dentro do triagulo!\n");
-    printf("T.i = ");
-    scanf("%d", &T.i);
-    printf("T.j = ");
-    scanf("%d", &T.j);
-
-
-    if(TesteTriangulo(A, B, C, T))
-    {
-      printf("O ponto informado está dentro do triangulo!\n");
-    }
-    else
-    {
-      printf("O ponto informado não está dentro do triangulo!\n");
-    }
-
-
-    return 0;
+int main(void){
+   int x[3], y[3];
+   printf("Digite os valores do primeiro vertice: \n");
+   scanf("%d %d", &y[0], &x[0]);
+   printf("Digite os valores do segundo vertice: \n");
+   scanf("%d %d", &y[1], &x[1]);
+   printf("Digite os valores do terceiro vertice: \n");
+   scanf("%d %d", &y[2], &x[2]);
+   system("clear");
+   for(int i = 1; i <= 48; i++){
+      for(int j = 1; j <= 64; j++){
+         printf(isInside(y[0], x[0], y[1], x[1], y[2], x[2], i, j) ? "*" : " ");
+      }
+      printf("\n");
+   }
+   return 0;
 }
