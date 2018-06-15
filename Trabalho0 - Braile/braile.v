@@ -95,12 +95,22 @@ endmodule
 module brailev(
 	input CLOCK_50,
 	input [10:4] SW,
-	output [0:6] HEX0);
+	output [0:6] HEX0,
+	output [0:6] HEX1,
+	output [0:6] HEX2,
+	output [0:6] HEX3);
 		
 	wire[6:0] bra;
+	reg[6:0] offreg = 7'b0000000;
+	wire[6:0] off;
+	
+	assign off = offreg;
 	
 	reg [5:0] letra = 6'b000000;
 	assign HEX0 = ~bra;
+	assign HEX1 = off;
+	assign HEX2 = off;
+	assign HEX3 = off;
 	
 	alfabeto B(CLOCK_50, SW, bra);
 
