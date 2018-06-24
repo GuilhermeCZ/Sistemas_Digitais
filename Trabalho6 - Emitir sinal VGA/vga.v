@@ -2,8 +2,8 @@ module vga (
   	input CLOCK_50,
   	output [3:0] VGA_R,
   	output [3:0] VGA_G,
-	  output [3:0] VGA_B,
-   	output VGA_HS,
+	output [3:0] VGA_B,
+   output VGA_HS,
   	output VGA_VS);
 
 reg [10:0] cx = 0;
@@ -19,16 +19,16 @@ assign VGA_HS = cx >= 190;
 assign VGA_VS = cy >= 2;
 
 always @(posedge CLOCK_50) begin
-	if (cx == 1585) 
+	if (cx == 1585)
     begin
         if (cy == 525) begin
 			cy <= 0;
         end
-		else 
+		else
 			cy <= cy + 1;
 		cx <= 0;
 	end
-    else 
+    else
     begin
         // cy <= cy;
 		cx <= cx + 1;
